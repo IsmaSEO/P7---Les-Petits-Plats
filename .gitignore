@@ -1,0 +1,21 @@
+# Node modules
+node_modules/
+
+# Tailwind CSS output
+public/css/tailwind.css
+dist/
+
+# Logs
+npm-debug.log*
+
+# Output of 'npm pack'
+*.tgz
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# IDEs and editors
+.vscode/
