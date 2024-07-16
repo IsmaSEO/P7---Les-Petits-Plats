@@ -3,8 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/output.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/f919b2fb9f.js" crossorigin="anonymous"></script>
     <title>Les petits plats</title>
 </head>
+
+<body class="bg-gray-200">
+     <!-- Section Header -->
+    <header class="relative flex h-screen flex-col items-center justify-center"
+    style="background-image: url('assets/lampos-aritonang-24gR_9lCdes-unsplash 1.jpg'); background-size: cover;">
+        <div class="absolute top-6 left-6 flex items-center object-cover">
+            <img src="assets/logo/logo.png" alt="logo Les petits plats" class="h-10">
+        </div>
+        <h1 class="font-anton text-yellow-300 text-4xl text-center uppercase leading-normal w-2/5">
+            Cherchez parmi plus de 1500 recettes du quotidien,simples et délicieuses
+        </h1>
+        <div class="bg-white flex justify-center items-center rounded-xl w-2/4 mb-1 relative mt-5">
+            <input type="text" id="input-main" class="font-manrope w-full p-6 h-full rounded-lg max-375:text-xs max-375:h-11" placeholder="Rechercher une recette, un ingrédient...">
+            <div class="flex items-center space-x-2 absolute right-2 top-1/2 transform -translate-y-1/2">
+              <button
+                class="rounded-md bg-white text-gray-400 flex justify-center items-center md:h-12 md:w-12 lg:h-[52px] lg:w-[52px]"
+                id="clear-button"
+              >
+                <i class="fas fa-times"></i>
+              </button>
+              <button
+                class="rounded-md bg-black text-white flex justify-center items-center md:h-12 md:w-12 lg:h-[52px] lg:w-[52px] lg:transition-colors lg:duration-200 lg:ease-linear lg:hover:bg-yellow-300 lg:hover:text-black"
+                id="search-button"
+              >
+                <i class="fas fa-magnifying-glass"></i>
+              </button>
+            </div>
+          </div>
+    </header>
+</body>
+
+</html>

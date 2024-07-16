@@ -3,7 +3,12 @@ module.exports = {
     "./index.html",
     "./src/**/*.{html,js}"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        anton: ['Anton', 'sans-serif'],
+        manrope: ['Manrope', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 }
