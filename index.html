@@ -1,43 +1,110 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/css/output.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/f919b2fb9f.js" crossorigin="anonymous"></script>
-    <title>Les petits plats</title>
-</head>
 
-<body class="bg-gray-200">
-     <!-- Section Header -->
-    <header class="relative flex h-screen flex-col items-center justify-center"
-    style="background-image: url('assets/lampos-aritonang-24gR_9lCdes-unsplash 1.jpg'); background-size: cover;">
-        <div class="absolute top-6 left-6 flex items-center object-cover">
-            <img src="assets/logo/logo.png" alt="logo Les petits plats" class="h-10">
-        </div>
-        <h1 class="font-anton text-yellow-300 text-4xl text-center uppercase leading-normal w-2/5">
-            Cherchez parmi plus de 1500 recettes du quotidien,simples et délicieuses
-        </h1>
-        <div class="bg-white flex justify-center items-center rounded-xl w-2/4 mb-1 relative mt-5">
-            <input type="text" id="input-main" class="font-manrope w-full p-6 h-full rounded-lg max-375:text-xs max-375:h-11" placeholder="Rechercher une recette, un ingrédient...">
-            <div class="flex items-center space-x-2 absolute right-2 top-1/2 transform -translate-y-1/2">
-              <button
-                class="rounded-md bg-white text-gray-400 flex justify-center items-center md:h-12 md:w-12 lg:h-[52px] lg:w-[52px]"
-                id="clear-button"
-              >
-                <i class="fas fa-times"></i>
-              </button>
-              <button
-                class="rounded-md bg-black text-white flex justify-center items-center md:h-12 md:w-12 lg:h-[52px] lg:w-[52px] lg:transition-colors lg:duration-200 lg:ease-linear lg:hover:bg-yellow-300 lg:hover:text-black"
-                id="search-button"
-              >
-                <i class="fas fa-magnifying-glass"></i>
-              </button>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="/css/output.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Manrope&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/f919b2fb9f.js" crossorigin="anonymous"></script>
+        <title>Les petits plats</title>
+    </head>
+
+    <body class="bg-gray-200">
+        <!-- Section Header -->
+        <header class="relative flex h-screen flex-col items-center justify-center" style="background-image: url('assets/lampos-aritonang-24gR_9lCdes-unsplash 1.jpg'); background-size: cover;">
+            <div class="absolute top-6 left-6 flex items-center object-cover">
+                <img src="assets/logo/logo.png" alt="logo Les petits plats" class="h-10">
             </div>
-          </div>
-    </header>
-</body>
+            <h1 class="font-anton text-yellow-300 text-4xl text-center uppercase leading-normal w-2/5">
+                Cherchez parmi plus de 1500 recettes du quotidien,simples et délicieuses
+            </h1>
+            <div class="bg-white flex justify-center items-center rounded-xl w-2/4 mb-1 relative mt-5">
+                <input type="text" id="input-main" class="font-manrope w-full p-6 h-full rounded-lg max-375:text-xs max-375:h-11" placeholder="Rechercher une recette, un ingrédient...">
+                <div class="flex items-center space-x-2 absolute right-2 top-1/2 transform -translate-y-1/2">
+                    <button class="rounded-md bg-white text-gray-400 flex justify-center items-center md:h-12 md:w-12 lg:h-[52px] lg:w-[52px]" id="clear-button">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <button class="rounded-md bg-black text-white flex justify-center items-center md:h-12 md:w-12 lg:h-[52px] lg:w-[52px] lg:transition-colors lg:duration-200 lg:ease-linear lg:hover:bg-yellow-300 lg:hover:text-black" id="search-button">
+                        <i class="fas fa-magnifying-glass"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <section>
+            <!-- Section Filtres -->
+            <div id="filters" class="flex justify-center px-12 my-4">
+                <div class="font-manrope w-5/6 mx-auto mt-6 flex items-center justify-start gap-16 flex-wrap">
+                    <!-- Les boutons de filtre permettent aux utilisateurs de filtrer les recettes par ingrédients, appareils ou ustensiles. -->
+
+                    <!-- Filtre ingrédients -->
+                    <div id="ingredients-btn" class="relative w-56">
+                        <button id="btn-ingredients" class="flex items-center justify-between w-full bg-white p-4 rounded-t-xl shadow text-base">
+                            Ingrédients
+                            <i class="fas fa-chevron-down ml-2 transform transition-transform duration-300" id="chevron-ingredients"></i>
+                            <!-- Le bouton pour ouvrir le menu déroulant des ingrédients. -->
+                        </button>
+                        <div id="secondary-ingredients" class="dropdown-panel absolute left-0 z-50 w-full hidden origin-top transform rounded-b-xl border border-gray-300 bg-white shadow-lg transition-all duration-300 ease-in-out">
+                            <div class="relative flex items-center px-3 py-2">
+                                <input id="input-ingredients" type="text" class="w-full border border-gray-300 px-2 py-1 text-base placeholder-gray-600 rounded-none" placeholder="">
+                                <div class="absolute right-6 flex items-center cursor-pointer">
+                                    <i class="fa-solid fa-magnifying-glass text-gray-600" aria-hidden="true"></i>
+                                </div>
+                                <!-- L'entrée pour rechercher un ingrédient spécifique dans la liste déroulante. -->
+                            </div>
+                            <ul id="dropdown-ingredients-list" class="px-4 py-2 space-y-2 overflow-y-auto max-h-48 text-base"></ul>
+                            <!-- La liste des ingrédients disponibles pour le filtrage. -->
+                        </div>
+                    </div>
+
+                    <!-- Filtre appareils -->
+                    <div id="appareils-btn" class="relative w-56">
+                        <button id="btn-appareils" class="flex items-center justify-between w-full bg-white p-4 rounded-t-xl shadow">
+                            Appareils
+                            <i class="fas fa-chevron-down ml-2 transform transition-transform duration-300" id="chevron-appareils"></i>
+                            <!-- Le bouton pour ouvrir le menu déroulant des appareils. -->
+                        </button>
+                        <div id="secondary-appareils" class="dropdown-panel absolute left-0 z-50 w-full hidden origin-top transform rounded-b-xl border border-gray-300 bg-white shadow-lg transition-all duration-300 ease-in-out">
+                            <div class="relative flex items-center px-3 py-2">
+                                <input id="input-appareils" type="text" class="w-full border border-gray-300 px-2 py-1 text-base placeholder-gray-600 rounded-none" placeholder="">
+                                <div class="absolute right-6 flex items-center cursor-pointer">
+                                    <i class="fa-solid fa-magnifying-glass text-gray-600" aria-hidden="true"></i>
+                                </div>
+                                <!-- L'entrée pour rechercher un appareil spécifique dans la liste déroulante. -->
+                            </div>
+                            <ul id="dropdown-appareils-list" class="px-4 py-2 space-y-2 overflow-y-auto max-h-48 text-base"></ul>
+                            <!-- La liste des appareils disponibles pour le filtrage. -->
+                        </div>
+                    </div>
+
+                    <!-- Filtre ustensiles -->
+                    <div id="ustensils-btn" class="relative w-56">
+                        <button id="btn-ustensils" class="flex items-center justify-between w-full bg-white p-4 rounded-t-xl shadow">
+                            Ustensiles
+                            <i class="fas fa-chevron-down ml-2 transform transition-transform duration-300" id="chevron-ustensils"></i>
+                            <!-- Le bouton pour ouvrir le menu déroulant des ustensiles. -->
+                        </button>
+                        <div id="secondary-ustensils" class="dropdown-panel absolute left-0 z-50 w-full hidden origin-top transform rounded-b-xl border border-gray-300 bg-white shadow-lg transition-all duration-300 ease-in-out">
+                            <div class="relative flex items-center px-3 py-2">
+                                <input id="input-ustensils" type="text" class="w-full border border-gray-300 px-2 py-1 text-base placeholder-gray-600 rounded-none" placeholder="">
+                                <div class="absolute right-6 flex items-center cursor-pointer">
+                                    <i class="fa-solid fa-magnifying-glass text-gray-600" aria-hidden="true"></i>
+                                </div>
+                                <!-- L'entrée pour rechercher un ustensile spécifique dans la liste déroulante. -->
+                            </div>
+                            <ul id="dropdown-ustensils-list" class="px-4 py-2 space-y-2 overflow-y-auto max-h-48 text-base"></ul>
+                            <!-- La liste des ustensiles disponibles pour le filtrage. -->
+                        </div>
+                    </div>
+
+                    <!-- Compteur de recettes -->
+                    <span id="recipe-count" class="text-center text-xl items-center font-anton pl-56 leading-normal">50 recettes</span>
+                    <!-- Affiche le nombre de recettes disponibles après filtrage, permettant aux utilisateurs de savoir combien de recettes correspondent à leurs critères. -->
+                </div>
+            </div>
+        </section>
+    </body>
 
 </html>
