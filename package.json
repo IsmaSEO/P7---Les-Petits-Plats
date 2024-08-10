@@ -5,7 +5,10 @@
     "build:css": "tailwindcss -i ./css/input.css -o ./css/output.css"
   },
   "devDependencies": {
+    "@eslint/js": "^9.9.0",
     "autoprefixer": "^10.4.19",
+    "eslint": "^9.9.0",
+    "globals": "^15.9.0",
     "postcss": "^8.4.39",
     "postcss-cli": "^11.0.0",
     "prettier": "^3.3.2",
